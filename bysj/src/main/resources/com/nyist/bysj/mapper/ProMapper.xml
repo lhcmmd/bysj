@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nyist.bysj.mapper.ProMapper">
+
+    <select id="queryById" resultType="Product" parameterType="Integer">
+       select * from product where id=#{id}
+    </select>
+    <select id="queryCoverImg" resultType="String" parameterType="Integer">
+        select p.cover_img from product p where id=#{id}
+    </select>
+    <select id="queryDetailImg" resultType="ProImg" parameterType="Integer">
+        select * from pro_img p where pid=#{id}
+    </select>
+    <!-- 后台分页查商品 -->
+    <select id="queryAllPro" resultType="Product">
+      select * from product LIMIT #{start},#{rows}
+    </select>
+    <!-- 分页模糊查名字数量 -->
+    <select id="getCount" resultType="int">
+        select  count(id) from product
+    </select>
+
+    <!-- 后台分页查商品图片 -->
+    <select id="queryAllProImg" resultType="ProImg">
+        select * from pro_img where pid=#{pid} LIMIT #{start},#{rows}
+    </select>
+    <!-- 分页查图片数量 -->
+    <select id="getProImgCount" resultType="int">
+        select  count(id) from pro_img where pid=#{pid}
+    </select>
+
+</mapper>

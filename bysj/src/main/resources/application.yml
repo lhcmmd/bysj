@@ -1,0 +1,55 @@
+server:
+  port: 8989
+  context-path: /bysj
+  jsp-servlet:
+    init-parameters:
+      development: true
+
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/bysj
+    #url: jdbc:mysql://rm-2ze3fc262r8qj1cigho.mysql.rds.aliyuncs.com:3306/lhchh
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  http:
+    encoding:
+      charset: utf-8
+      force: true
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  profiles:
+    active: test
+
+  redis:
+    host: 192.168.194.139
+    port: 7000
+    pool:
+      max-active: 8
+      max-wait: 1
+      max-idle: 8
+      min-idle: 0
+    timeout: 0
+
+
+mybatis:
+  type-aliases-package: com.nyist.bysj.entity
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601
+  thumb-image:
+    width: 150
+    height: 150
+  tracker-list:
+    - 192.168.194.140:22122
+
